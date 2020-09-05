@@ -11,7 +11,7 @@ from club_app.utils.models import ClubModel
 class User(ClubModel, AbstractUser):
     """Users model.
 
-    Extend from Django's Abstract User, change the username field to email and add some extra fields.
+    Extend from Django's Abstract User, change the username field to login by email.
     """
 
     email = models.EmailField(
@@ -28,22 +28,13 @@ class User(ClubModel, AbstractUser):
     )
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username','first_name', 'last_name']
 
     is_client = models.BooleanField(
         'client status',
         default=True,
         help_text=(
-            'Help easily distinguis users and perform queries.'
             'Clients are the main type of users.'
         )
-    )
-
-    is_verified = models.BooleanField(
-        'verified',
-        default=False,
-        help_text ='Set to true when the user is verified'
     )
 
     is_driver = models.BooleanField(
@@ -51,6 +42,11 @@ class User(ClubModel, AbstractUser):
         default=False,
         help_text ='Set to true when the user is a driver'
     )
+
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username','first_name', 'last_name']
+
 
     def __str__(self):
         """Return Username"""

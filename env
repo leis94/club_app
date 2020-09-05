@@ -1,6 +1,6 @@
 # my.cnf
 [client]
-database = club 
+database = club_app 
 user = root
 password = ""
 default-character-set = utf8
