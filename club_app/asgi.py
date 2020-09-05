@@ -1,5 +1,5 @@
 """
-ASGI config for club_app project.
+ASGI config for club project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

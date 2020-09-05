@@ -1,42 +1,55 @@
-import os
+
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'by*aau5lg9o!+vwwpa)^0^4x34-%+1*z@#33k6d^7d%k!14!vo'
+SECRET_KEY = 'no*0(0(+(ca2u(%y7ufsda-xi+h^5i+m5nhv@_)p+8(-m*s4hg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Users & Authentication
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
-INSTALLED_APPS = [
-    #Django
+DJANGO_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #Local
-    'accounts'
 ]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
+]
+
+LOCAL_APPS = [
+    'club_app.users.apps.UsersAppConfig',
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -44,10 +57,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'club_app.urls'
 
+
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'accounts/templates')],
+        'DIRS': [
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,10 +82,13 @@ WSGI_APPLICATION = 'club_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# settings.py
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': 'env',
+        },
     }
 }
 
@@ -110,6 +129,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# Static files
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+
+ADMIN_URL = 'admin/'

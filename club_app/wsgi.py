@@ -1,5 +1,5 @@
 """
-WSGI config for club_app project.
+WSGI config for club project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
