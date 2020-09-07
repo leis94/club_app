@@ -1,0 +1,19 @@
+.sub-information {
+  margin: 0 1rem;
+}
+
+.titulo {
+  margin-bottom: 0;
+}
+
+.datos-viaje {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0;
+}
+.datos-viaje p {
+  margin-bottom: 0;
+}
+.datos-viaje h3 {
+  margin-top: 0;
+}
