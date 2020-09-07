@@ -17,7 +17,7 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     """Profile model admin."""
-    list_display = ('user', 'ranking', 'rides_taken', )
+    list_display = ('user', 'ranking', 'trips_taken', )
     search_fields = ('user__username', 'user__email','user__first_name','user__last_name')
     list_filter = ('ranking',)
 

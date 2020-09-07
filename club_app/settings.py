@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'club_app.users.apps.UsersAppConfig',
     'club_app.cars.apps.CarsAppConfig',
+    'club_app.trips.apps.TripsAppConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

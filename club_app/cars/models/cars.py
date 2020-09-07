@@ -35,7 +35,7 @@ class Car(ClubModel):
         help_text="Bolean field to set if a car is active or not'"
     )
 
-    rides_taken = models.PositiveIntegerField(default=0)
+    trips_taken = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         """Return car license."""

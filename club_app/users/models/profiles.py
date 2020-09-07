@@ -25,11 +25,11 @@ class Profile(ClubModel):
     biography = models.TextField(max_length=500, blank=True)
 
     # Stats
-    rides_taken = models.PositiveIntegerField(default=0)
+    trips_taken = models.PositiveIntegerField(default=0)
 
     ranking = models.FloatField(
         default=5.0,
-        help_text="User's reputation based on the rides taken and offered."
+        help_text="User's reputation based on the trips  taken and offered."
     )
 
     def __str__(self):
