@@ -14,7 +14,7 @@ SECRET_KEY = 'i_%iryjeh2qu28^^v5u-eaif2ujuj)+cbl!5bsfr7yzb^b-n3('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 #Users & Authentication
 AUTH_USER_MODEL = 'users.User'
@@ -49,10 +49,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'club_app_backend.urls'
@@ -60,9 +61,7 @@ ROOT_URLCONF = 'club_app_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'club_app_frontend/build'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,3 +132,10 @@ STATICFILES_FINDERS = [
 ]
 
 ADMIN_URL = 'admin/'
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+       'http://localhost:3000',
+)

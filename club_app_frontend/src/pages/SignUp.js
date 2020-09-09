@@ -9,9 +9,7 @@ import './styles/SignUp.css';
 
 class SignUp extends React.Component {
   data = [];
-  state={
-    userName: ''
-  };
+  state={};
   handleChange = e => {
     // console.log({ name: e.target.name, value: e.target.value });
     this.setState({
@@ -25,10 +23,11 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    saveUser(this.data)
+    saveUser(this.data);
     this.data.push(this.state);
     // console.log(this.data);
   };
+
 
 
   render() {
@@ -42,28 +41,28 @@ class SignUp extends React.Component {
               onChange={this.handleChange}
               className="input"
               type="text"
-              name="userName"
+              name="username"
               // id=""
               placeholder="Nombre de usuario"
-              value={this.state.userName}
+              value={this.state.username}
             />
             <input
               onChange={this.handleChange}
               className="input"
               type="text"
-              name="nombres"
+              name="first_name"
               // id=""
               placeholder="Nombres"
-              value={this.state.nombres}
+              value={this.state.first_name}
             />
             <input
               onChange={this.handleChange}
               className="input"
               type="text"
-              name="apellidos"
+              name="last_name"
               // id=""
               placeholder="Tu nombre completo"
-              value={this.state.apellidos}
+              value={this.state.last_name}
             />
             <input
               onChange={this.handleChange}
@@ -78,10 +77,10 @@ class SignUp extends React.Component {
               onChange={this.handleChange}
               className="input"
               type="tel"
-              name="tel"
+              name="phone_number"
               // id=""
               placeholder="Número de celular"
-              value={this.state.tel}
+              value={this.state.phone_number}
             />
             <input
               onChange={this.handleChange}
