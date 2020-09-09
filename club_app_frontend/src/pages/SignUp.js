@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import backBtn from '../assets/images/icono-atras-50.png';
+import { saveUser } from '../services/index';
 import './styles/SignUp.css';
 
 
@@ -24,8 +25,9 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    saveUser(this.data)
     this.data.push(this.state);
-    console.log(this.data);
+    // console.log(this.data);
   };
 
 
