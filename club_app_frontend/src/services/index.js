@@ -2,21 +2,21 @@ import React from 'react';
 
 import axios from 'axios';
 
-const baseUrl = 'aqui-va-la-url';
+const baseUrl = 'http://localhost:8000';
 
 export async function saveUser (userData) {
   try {
     console.log(userData);
     const formData =new FormData()
 
-    formData.append('userName', userData.userName)
-    formData.append('firstName', userData.firstName)
-    formData.append('lastName', userData.lastName)
+    formData.append('username', userData.username)
+    formData.append('first_name', userData.first_name)
+    formData.append('last_name', userData.last_name)
     formData.append('email', userData.email)
-    formData.append('tel', userData.tel)
+    formData.append('phone_number', userData.phone_number)
     formData.append('password', userData.password)
     const response = await axios({
-      url: `${baseUrl}/user`,
+      url: `${baseUrl}/users/signup/`,
       method: 'POST',
       data: formData,
     })

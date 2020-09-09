@@ -13,7 +13,6 @@ from rest_framework.validators import UniqueValidator
 from club_app_backend.users.models import User, Profile
 
 
-
 class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
 
