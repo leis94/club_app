@@ -1,8 +1,7 @@
-import React from 'react';
 
-import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000';
+const baseURL = 'http://localhost:8000/';
+
 
 export async function saveUser (userData) {
   try {
@@ -15,16 +14,17 @@ export async function saveUser (userData) {
     formData.append('email', userData.email)
     formData.append('phone_number', userData.phone_number)
     formData.append('password', userData.password)
-    const response = await axios({
-      url: `${baseUrl}/users/signup/`,
-      method: 'POST',
-      data: formData,
-    })
+    const axios = require('axios')
 
-    return response
+    axios.post(`${baseURL}users/signup/`, {})
+      .then(function (response) {
+        console.log(response);
+      })
+
   } catch(error) {
     console.log(error);
   }
 }
+
 
 
