@@ -39,7 +39,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'club_app_backend.users.apps.UsersAppConfig',
-    #'club_app.cars.apps.CarsAppConfig',
+    'club_app_backend.cars.apps.CarsAppConfig',
     #'club_app.trips.apps.TripsAppConfig',
 ]
 
