@@ -1,30 +1,34 @@
-import React from 'react';
-
-import axios from 'axios';
-
 const baseUrl = 'http://localhost:8000';
 
-export async function saveUser (userData) {
+export async function createUser(userData) {
   try {
-    console.log(userData);
-    const formData =new FormData()
-
-    formData.append('username', userData.username)
-    formData.append('first_name', userData.first_name)
-    formData.append('last_name', userData.last_name)
-    formData.append('email', userData.email)
-    formData.append('phone_number', userData.phone_number)
-    formData.append('password', userData.password)
-    const response = await axios({
-      url: `${baseUrl}/users/signup/`,
+    const response = await fetch(`${baseUrl}/users/signup/`, {
       method: 'POST',
-      data: formData,
-    })
-
-    return response
-  } catch(error) {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    console.log('saveUser -> response', response);
+    return response;
+  } catch (error) {
     console.log(error);
   }
 }
 
-
+export async function loginUser(user) {
+  try {
+    const response = await fetch(`${baseUrl}/users/login/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
+    console.log('loginUser -> data', data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
