@@ -3,14 +3,18 @@
 #Django
 from django.urls import path, include
 
+# Django REST Framework
+from rest_framework.routers import DefaultRouter
+
 #Views
-from club_app_backend.users.views import (
-    UserLoginAPIView, 
-    UserSignUpAPIView,
-)
+from .views import users as user_views
+
+
+router = DefaultRouter()
+router.register(r'users', user_views.UserViewSet, basename='username')
 
 urlpatterns = [
-    path('users/login/', UserLoginAPIView.as_view(), name='login'),
-    path('users/signup/', UserSignUpAPIView.as_view(), name='signup'),
+    path('', include(router.urls)),
+    
 ]
 

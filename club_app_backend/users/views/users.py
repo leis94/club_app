@@ -1,7 +1,8 @@
 """Users views."""
 
 # Django REST Framework
-from rest_framework import status
+from rest_framework import status, viewsets, mixins
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -15,11 +16,21 @@ from club_app_backend.users.serializers import (
     UserSignUpSerializer,
 )
 
-class UserLoginAPIView(APIView):
-    """User login API View"""
 
-    def post(self, request, *args, **kwargs):
-        """ Handle HTTP POST request."""
+class UserViewSet(mixins.CreateModelMixin,
+                mixins.ListModelMixin,
+                mixins.RetrieveModelMixin,
+                mixins.UpdateModelMixin,
+                viewsets.GenericViewSet):
+    """User view set.
+    Handle sign up, login and accoutn verification.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserModelSerializer
+
+    @action(detail=False, methods=['post'])
+    def login(self, request):
+        """User login up."""
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user, token = serializer.save()
@@ -30,18 +41,9 @@ class UserLoginAPIView(APIView):
         return Response(data, status=status.HTTP_201_CREATED)
 
 
-class UserSignUpAPIView(APIView):
-    """User login API View"""
-
-    def get(self, request, *args, **kwargs):
-        """Handle HTTP GET request."""
-        users = User.objects.all()
-        serializer = UserSignUpSerializer(users, many=True)
-        return Response(serializer.data)
-
-
-    def post(self, request, *args, **kwargs):
-        """ Handle HTTP POST request."""
+    @action(detail=False, methods=['post'])
+    def signup(self, request):
+        """User signup up."""
         serializer = UserSignUpSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user, token = serializer.save()
