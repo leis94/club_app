@@ -11,7 +11,7 @@ from .views import cars as car_views
 
 
 router = DefaultRouter()
-router.register(r'users', car_views.CarViewSet, basename='car')
+router.register(r'cars', car_views.CarViewSet, basename='car')
 
 urlpatterns = [
     path('', include(router.urls)),

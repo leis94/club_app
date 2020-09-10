@@ -5,7 +5,7 @@ from rest_framework import serializers
 from club_app_backend.cars.models import Car
 
 
-class CarrModelSerializer(serializers.ModelSerializer):
+class CarModelSerializer(serializers.ModelSerializer):
     """Car model serializer."""
 
     class Meta:
@@ -13,3 +13,6 @@ class CarrModelSerializer(serializers.ModelSerializer):
 
         model = Car
         fields = '__all__'
+
+
+    
