@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'club_app_backend.users.apps.UsersAppConfig',
     'club_app_backend.cars.apps.CarsAppConfig',
-    #'club_app.trips.apps.TripsAppConfig',
+    'club_app_backend.trips.apps.TripsAppConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -139,3 +139,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
        'http://localhost:3000',
 )
+
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
